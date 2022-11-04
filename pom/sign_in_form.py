@@ -1,19 +1,21 @@
 from base.seleniumbase import SeleniumBase
 from selenium.webdriver.remote.webelement import WebElement
-from typing import List
 
 
-class HomepageNav(SeleniumBase):
+class SignInForm(SeleniumBase):
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-        self.__nav_links: str = '#items>ytd-guide-entry-renderer'
         self.sign_in_button: str = '//*[@id="buttons"]/ytd-button-renderer/yt-button-shape/a/yt-touch-feedback-shape/div'
-        self.__search_bar: str = '//*[@id="search-input"]/div'
-
-    def get_nav_links(self) -> List[WebElement]:
-        return self.are_visible('css', self.__nav_links, 'Header Navigation Links')
+        self.login_omnibox: str = '//*[@id="identifierId"]'
+        self.next_button: str = '//*[@id="identifierNext"]/div/button'
 
     def get_sign_in_button(self) -> WebElement:
         return self.is_visible('xpath', self.sign_in_button, 'Sign in')
+
+    def get_login_omnibox(self) -> WebElement:
+        return self.is_visible('xpath', self.login_omnibox, 'Login omnibox')
+
+    def get_next_button(self):
+        return self.is_visible('xpath', self.next_button, 'Next button')

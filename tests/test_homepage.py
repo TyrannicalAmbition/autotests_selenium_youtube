@@ -10,4 +10,9 @@ class TestHomepage:
         homepage_nav = HomepageNav(self.driver)
         for index in range(15):
             homepage_nav.get_nav_links()[index].click()
-            time.sleep(1.5)
+            time.sleep(2)
+
+    def test_sign_in_button(self):
+        homepage_nav = HomepageNav(self.driver)
+        homepage_nav.get_sign_in_button().click()
+        time.sleep(2)
